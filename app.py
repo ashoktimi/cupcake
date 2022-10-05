@@ -14,9 +14,10 @@ connect_db(app)
 @app.route('/')
 def index_page():
     
-    # cake = Cupcake.query.all()
-    # return render_template('index.html', cakes=cake)
-    return render_template('index.html')
+    cake = Cupcake.query.all()
+
+    return render_template('base.html', cakes=cake)
+    # return render_template('base.html')
 
 
 # @app.route('/', methods=["GET", "POST"])
@@ -84,7 +85,7 @@ def delete_cupcake(cupcake_id):
     cake = Cupcake.query.get_or_404(cupcake_id)
     db.session.delete(cake)
     db.session.commit()
-    return jsonify(message="deleted")
+    return jsonify(message="Deleted")
 
 
 
